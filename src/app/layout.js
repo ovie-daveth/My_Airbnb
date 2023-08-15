@@ -1,5 +1,10 @@
+"use client"
+
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { ThemeProvider } from "@material-tailwind/react";
+import TopNavbar from '../components/compound/TopNavbar';
+import BottomNavbar from '@/components/compound/BottomNavbar';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -10,8 +15,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ThemeProvider>
+      <html lang="en">
+       
+        <body className={inter.className}>
+          <TopNavbar />
+          <BottomNavbar />
+            {children}
+        </body>
+      </html>
+    </ThemeProvider>
   )
 }
